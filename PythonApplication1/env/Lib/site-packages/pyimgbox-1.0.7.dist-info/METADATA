@@ -1,0 +1,52 @@
+Metadata-Version: 2.1
+Name: pyimgbox
+Version: 1.0.7
+Summary: API for uploading images to imgbox.com
+Author-email: plotski <plotski@example.org>
+License: GPL-3.0-or-later
+Project-URL: Repository, https://codeberg.org/plotski/pyimgbox
+Project-URL: Bug Tracker, https://codeberg.org/plotski/pyimgbox/issues
+Project-URL: Changelog, https://codeberg.org/plotski/pyimgbox/raw/branch/master/NEWS
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)
+Classifier: Operating System :: OS Independent
+Classifier: Topic :: Software Development :: Libraries
+Classifier: Intended Audience :: Developers
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: httpx ==0.*
+Requires-Dist: beautifulsoup4
+Provides-Extra: dev
+Requires-Dist: pytest ; extra == 'dev'
+Requires-Dist: pytest-asyncio ; extra == 'dev'
+Requires-Dist: pytest-mock ; extra == 'dev'
+Requires-Dist: pytest-httpserver ; extra == 'dev'
+Requires-Dist: tox ; extra == 'dev'
+Requires-Dist: coverage ; extra == 'dev'
+Requires-Dist: pytest-cov ; extra == 'dev'
+Requires-Dist: ruff ; extra == 'dev'
+Requires-Dist: flake8 ; extra == 'dev'
+Requires-Dist: isort ; extra == 'dev'
+
+Python 3.6+ library for uploading images to [https://imgbox.com/](imgbox.com).
+
+[imgbox-cli](https://codeberg.org/plotski/imgbox-cli) is a command line tool that uses pyimgbox.
+
+### Installation
+
+pyimgbox is on [PyPI](https://pypi.org/project/pyimgbox/).
+
+```sh
+$ pip install pyimgbox
+```
+
+### Usage
+
+```python
+async with pyimgbox.Gallery(title="Hello, World!") as gallery:
+    async for submission in gallery.add(files):
+        pprint.pprint(submission)
+```
+
+See [examples.py](examples.py) for more examples.

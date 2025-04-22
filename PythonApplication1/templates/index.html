@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Imgbox Uploader</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 2em;
+        }
+
+        label, input, button {
+            display: block;
+            margin-bottom: 0.5em;
+        }
+
+            input[type="text"], input[type="file"] {
+                width: 300px;
+            }
+
+        .results {
+            margin-top: 1em;
+            padding: 1em;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Upload Images to Imgbox</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <label for="files">Select Images (JPG, PNG, GIF):</label>
+        <input type="file" id="files" name="files" multiple required accept="image/jpeg, image/png, image/gif">
+
+        <label for="title">Gallery Title (Optional):</label>
+        <input type="text" id="title" name="title" placeholder="e.g., My Awesome Trip">
+
+        <label for="authCookie">Imgbox Session Cookie (Optional, for uploading to your account):</label>
+        <input type="text" id="authCookie" name="authCookie" placeholder="Paste your _imgbox_session cookie value here" size="50" value="{{ session_cookie }}">
+        <small>Find this in your browser's developer tools (Application/Storage -> Cookies) after logging into imgbox.com.</small>
+        <br><br>
+        <button type="submit">Upload Images</button>
+    </form>
+
+    {% if upload_results %}
+    <div class="results">
+        <h2>Upload Results:</h2>
+        <p>{{ upload_results | safe }}</p>
+    </div>
+    {% endif %}
+
+    {% if error_message %}
+    <div class="results error">
+        <h2>Error:</h2>
+        <p>{{ error_message | safe }}</p>
+    </div>
+    {% endif %}
+</body>
+</html>
