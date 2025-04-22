@@ -225,7 +225,7 @@ async def handle_uploads_sequential(infos, title, session_cookie):
         m = re.search(r"/upload/edit/([^/]+)/([^/]+)", edit_url)
         if m:
             slug, token = m.groups()
-            gallery = pyimgbox.Gallery(id=slug, token=token)
+            gallery = pyimgbox.Gallery(slug=slug, token=token)
             log.info(f"Appending to existing gallery {slug}.")
         else:
             gallery = pyimgbox.Gallery(title=title)
