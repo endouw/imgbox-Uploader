@@ -1,3 +1,3 @@
-Flask
+Flask[async]==3.1.0
 pyimgbox
 gunicorn==20.1.0
